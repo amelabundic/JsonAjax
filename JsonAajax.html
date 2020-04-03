@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span id="span1"></span>
+
+ <form action="" method="get">
+    <label for="Text1">Unesite id:</label>
+    <input type="text" name="Text1" id="Text1"><br><br>
+    <input type="button" value="Pronadji zivotinju" onclick="PronadjiZivotinju()">
+</form>
+<br>
+<span id="span2"></span>
+    <script>
+   function PrikaziZivotinje() {
+       
+       var span1 = document.getElementById("span1");
+
+       var zahtjev = new XMLHttpRequest();
+       zahtjev.open("GET", "/Ziv/Zivotinje.json", true);
+       zahtjev.send();
+
+       zahtjev.onreadystatechange = function () {
+           if (zahtjev.readyState == 4 && zahtjev.status == 200) {
+               var zivotinje = JSON.parse(zahtjev.responseText);
+
+             var  s = "<ul>";
+
+              for (let i = 0; i < zivotinje.length; i++) {
+    s += `<li> ${zivotinje[i].Ime} je ${zivotinje[i].Vrsta}</li>`;
+                  
+              }
+              s += "</ul>";
+              span1.innerHTML = s;
+           }
+       };
+   }
+   document.body.onload = PrikaziZivotinje;
+
+   function PronadjiZivotinju() {
+       var Text1 = document.getElementById("Text1");
+       var span2 = document.getElementById("span2");
+
+       var id = Text1.value;
+
+       if (isNaN(id) || id == "") {
+           alert("Id mora biti broj");
+           Text1 = "";
+           span2.innerHTML = ""
+           Text1.focus();
+           return;
+       } 
+       var zahtjev = new XMLHttpRequest();
+       zahtjev.open("GET","/Ziv/Zivotinje.json", true);
+       
+
+       zahtjev.onreadystatechange = function () {
+           if (zahtjev.readyState == 4 && zahtjev.status == 200) {
+
+              var zivotinje = JSON.parse(zahtjev.responseText);
+
+              var zivotinja = null;
+
+              for (let i = 0; i < zivotinje.length; i++) {
+                  if (zivotinje[i].ZivotinjaId == id) {
+                     zivotinja = zivotinje[i]; 
+                  }
+                  
+              }
+              if (zivotinja !=null) {
+                  span2.innerHTML = `
+                  Id: ${zivotinja.ZivotinjaId}<br>
+                  Ime: ${zivotinja.Ime}<br>
+                  Vrsta: ${zivotinja.Vrsta}<br>
+                  Najdraza hrana: ${zivotinja.NajdrazaHrana}<br>
+                  Najmrza hrana: ${zivotinja.NajmrzaHrana}
+                  `;
+              } else {
+                  span2.innerHTML = "Ne postoji zivotinja za dati id";
+              }
+
+           }
+       };
+       zahtjev.send();
+   }
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+[
+{
+    "ZivotinjaId":1,
+    "Ime": "Cicko",
+     "Vrsta": "macka",
+     "NajdrazaHrana": "misevi",
+     "NajmrzaHrana": "mlijeko"
+    },
+    { 
+        "ZivotinjaId":2,
+        "Ime": "Bleki",
+        "Vrsta": "pas",
+        "NajdrazaHrana": "meso",
+        "NajmrzaHrana": "kroketi"
+    },
+    {   
+        "ZivotinjaId":3,
+        "Ime": "Dzesi",
+        "Vrsta": "macka",
+        "NajdrazaHrana": "mesni odrezak",
+        "NajmrzaHrana": "virsle" 
+    },
+    {  
+         "ZivotinjaId":4,
+        "Ime": "Laki",
+        "Vrsta": "pas",
+        "NajdrazaHrana": "meso",
+        "NajmrzaHrana": "suka hrana"
+    },
+    {  
+         "ZivotinjaId":5,
+        "Ime": "Milka",
+        "Vrsta": "macka",
+        "NajdrazaHrana": "piletina",
+        "NajmrzaHrana": "kroketi"
+    },
+    {  
+        "ZivotinjaId":6,
+       "Ime": "Bucko",
+       "Vrsta": "pas",
+       "NajdrazaHrana": "piletina",
+       "NajmrzaHrana": "krokeri"
+   },
+   {  
+         "ZivotinjaId":7,
+        "Ime": "Micka",
+        "Vrsta": "macka",
+        "NajdrazaHrana": "tuna",
+        "NajmrzaHrana": "suhe krokete"
+    }
+]
